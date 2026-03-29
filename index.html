@@ -13,7 +13,7 @@ body
     overflow: hidden;
 }
 
-/*  LOADER SCREEN */
+/* LOADER SCREEN */
 .loader
 {
     position: fixed;
@@ -68,12 +68,13 @@ body
 {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 5px 10px;
     background-color:black;
     height: 8vh;
     position: relative;
 }
+
 .navbar::after
 {
     content:"";
@@ -86,47 +87,14 @@ body
     box-shadow: 0 0 30px rgba(212, 175, 55, 1);
 }
 
-/* LOGO */
-.logo-box {
-  cursor: pointer;
-  position: relative;
-}
-.logo-img {
-   width: 40px;
-    height: 36px;
-    object-fit: fit; 
-    margin-top: 10px; 
-    margin-left: 730px;
-  transition:2s ease;
-}
-
-.logo-text {
-    position: absolute;
-    margin-top: -30px;
-    margin-left: 700px;
-    font-size: 22px;
-    color: white;
-    opacity: 0;
-    transform: scale(0.8);
-    transition:2.5s;
-}
-
-.logo-box:hover .logo-img {
-  opacity: 0.2;
-  filter: blur(4px);
-}
-.logo-box:hover .logo-text {
-  opacity: 1;
-  transform: scale(2);
-}
-
 /* MENU ICON */
 .menu-icon-container 
 {
-    position: fixed; 
-    top: 18px;
+    position: absolute; 
     left: 10px; 
+    top: 18px;
 }
+
 .bar1, .bar2, .bar3 
 {
     width: 20px; 
@@ -135,12 +103,49 @@ body
     margin: 6px 0; 
 }
 
+/* LOGO (FIXED HOVER) */
+.logo-box {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-img {
+    width: 40px;
+    height: 36px;
+    margin-top: 10px;
+    display: block;
+    transition:0.5s ease;
+}
+
+.logo-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    font-size: 22px;
+    color: white;
+    opacity: 0;
+    pointer-events: none; /* 🔥 prevents fake hover */
+    transition:0.5s ease;
+}
+
+/* HOVER ONLY ON IMAGE */
+.logo-img:hover {
+  opacity: 0.2;
+  filter: blur(4px);
+}
+
+.logo-img:hover + .logo-text {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
 /* TEXT ENTRY */
 .quotes
 {
     color:silver;
     margin-top:200px;
-    margin-left:340px;
+    text-align:center;
     font-size:25px;
 
     opacity: 0;
@@ -161,47 +166,38 @@ body
 .btn {
     padding: 12px 28px;
     border: none;
-    border-radius: 50px; /* smooth edges */
+    border-radius: 50px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    width: 180px;        /* same width for all buttons */
-    height: 45px;        /* same height */
+    width: 180px;
+    height: 45px;
     text-align: center;
     box-shadow:0 0 5px silver;
     background-color:transparent;
     color:silver;
 }
 
-@keyframes btnFade
-{
-    to {
-        opacity: 1;
-        transform: translateY(3px);
-    }
-}
 .btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 0 15px silver;
 }
+
 .btn:active
 {
     transform: translateY(2px) scale(0.97);
-    
     box-shadow: 
         0 2px 5px silver,
         inset 0 3px 8px silver;
-
     filter: brightness(0.9);
 }
 </style>
 </head>
 
 <body>
-<--loder-->
+
+<!-- LOADER -->
 <div class="loader">
     <img src="logo.png">
 </div>
@@ -210,12 +206,14 @@ body
 <div class="page">
 
 <div class="navbar">
+
 <div class="menu-icon-container">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
 </div>
 
+<!-- LOGO -->
 <div class="logo-box">
   <img src="logo.png" class="logo-img">
   <div class="logo-text">MITHRAN</div>
@@ -224,17 +222,16 @@ body
 </div>
 
 <div class="quotes">
-    <p>Welcome To Mithran , Explore Schemes In Mithran Get Benifited And be Successful</p>
+    <p>Welcome To Mithran, Explore Schemes In Mithran Get Benefited And Be Successful</p>
 </div>
 
-<div style="margin-top:100px; margin-left:675px;">
+<div style="margin-top:100px; display:flex; justify-content:center;">
     <button class="btn">Explore More</button>
 </div>
 
 </div>
 
 <script>
-/* ENABLE SCROLL AFTER LOAD */
 setTimeout(() => {
     document.body.style.overflow = "auto";
 }, 3500);
