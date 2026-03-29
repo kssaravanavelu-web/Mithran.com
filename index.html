@@ -192,6 +192,35 @@ body
         inset 0 3px 8px silver;
     filter: brightness(0.9);
 }
+.menu-btn {
+    width: 35px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-btn span {
+    height: 3px;
+    width: 100%;
+    background: silver;
+    border-radius: 10px;
+    transition: 0.4s ease;
+}
+
+/* ANIMATION TO X */
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
 </style>
 </head>
 
@@ -207,10 +236,10 @@ body
 
 <div class="navbar">
 
-<div class="menu-icon-container">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
+<div class="menu-btn" id="menuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
 <!-- LOGO -->
@@ -230,11 +259,13 @@ body
 </div>
 
 </div>
-
 <script>
 setTimeout(() => {
     document.body.style.overflow = "auto";
 }, 3500);
+document.getElementById("menuBtn").onclick = function() {
+    this.classList.toggle("active");
+};
 </script>
 
 </body>
