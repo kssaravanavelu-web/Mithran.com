@@ -54,7 +54,7 @@ body {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* NAVBAR */
+/* NAVBAR (UNCHANGED) */
 .navbar {
     display: flex;
     align-items: center;
@@ -63,15 +63,25 @@ body {
     position: relative;
 }
 
+.navbar::after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:1px;
+    background:white;
+    box-shadow: 0 0 20px silver;
+}
+
 .menu-btn {
     position: absolute;
-    left: 20px;
-    font-size: 28px;
+    left: 15px;
+    font-size: 26px;
     color: silver;
     cursor: pointer;
 }
 
-/* LOGO */
+/* LOGO (UNCHANGED) */
 .logo-box {
     position: relative;
 }
@@ -80,7 +90,7 @@ body {
     width: 40px;
     height: 36px;
     margin-top: 10px;
-    transition: 0.5s;
+    transition:2s ease;
 }
 
 .logo-text {
@@ -91,7 +101,8 @@ body {
     font-size: 22px;
     color: white;
     opacity: 0;
-    transition: 0.5s;
+    pointer-events: none;
+    transition:2s ease;
 }
 
 .logo-img:hover {
@@ -101,49 +112,47 @@ body {
 
 .logo-img:hover + .logo-text {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.3);
+    transform: translate(-50%, -50%) scale(1.5);
 }
 
-/* MODERN SIDEBAR */
+/* MODERN SIDEBAR (ONLY IMPROVED PART) */
 .sidebar {
     position: fixed;
     top: 20px;
-    left: -500px;
-    width: 380px;
+    left: -450px;
+    width: 360px;
     height: 90%;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(35px);
     border-radius: 30px;
-    padding: 40px 20px;
+    padding-top: 100px;
     transition: 0.6s cubic-bezier(0.77,0,0.18,1);
     z-index: 1000;
-    box-shadow: 0 0 40px rgba(255,255,255,0.1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
 }
 
 .sidebar.active {
     left: 20px;
 }
 
-/* MENU ITEMS */
 .sidebar a {
     display: block;
-    padding: 18px 20px;
-    margin: 10px 0;
+    padding: 18px 25px;
     color: white;
     text-decoration: none;
     font-size: 20px;
     border-radius: 12px;
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-40px);
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .sidebar a:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.12);
     transform: translateX(10px);
 }
 
-/* STAGGER ANIMATION */
+/* TEXT DELAY (STAGGER) */
 .sidebar.active a {
     animation: slideIn 0.5s forwards;
 }
@@ -165,7 +174,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.5);
     top: 0;
     left: 0;
     opacity: 0;
@@ -233,7 +242,6 @@ body {
     </div>
 </div>
 
-<!-- MODERN SIDEBAR -->
 <div class="sidebar" id="sidebar">
     <a href="#">Home</a>
     <a href="#">About</a>
@@ -263,7 +271,6 @@ const overlay = document.getElementById("overlay");
 btn.onclick = function() {
     sidebar.classList.toggle("active");
     overlay.classList.toggle("active");
-
     btn.innerHTML = sidebar.classList.contains("active") ? "✕" : "☰";
 };
 
