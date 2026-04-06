@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MITHRAN Finder</title>
+</head>
+<body>
+
+<h2>Select Category</h2>
+<select id="category">
+  <option value="">Select Category</option>
+</select>
+
+<h2>Select Type</h2>
+<select id="type">
+  <option value="">Select Type</option>
+  <option value="loan">Loan</option>
+  <option value="scheme">Scheme</option>
+</select>
+
+<!-- FARMER -->
+<h3>Farmer Filters</h3>
+<input type="number" id="land" placeholder="Enter land (acres)" style="display:none">
+
+<select id="caste" style="display:none">
+  <option value="">Community</option>
+  <option value="BC">BC</option>
+  <option value="MBC">MBC</option>
+  <option value="SC">SC</option>
+  <option value="ST">ST</option>
+  <option value="OC">OC</option>
+  <option value="Minority">Minority</option>
+</select>
+
+<select id="income" style="display:none">
+  <option value="">Income</option>
+  <option value="200000">Under 2 Lakh</option>
+  <option value="500000">Under 5 Lakh</option>
+  <option value="700000">Under 7 Lakh</option>
+  <option value="1000000">Under 10 Lakh</option>
+</select>
+
+<!-- STUDENT -->
+<h3>Student Filters</h3>
+<select id="quota" style="display:none">
+  <option value="">Quota</option>
+  <option value="government">Government</option>
+  <option value="management">Management</option>
+</select>
+
+<select id="student_caste" style="display:none">
+  <option value="">Community</option>
+  <option value="BC">BC</option>
+  <option value="MBC">MBC</option>
+  <option value="SC">SC</option>
+  <option value="ST">ST</option>
+  <option value="OC">OC</option>
+  <option value="Minority">Minority</option>
+</select>
+
+<select id="gender" style="display:none">
+  <option value="">Gender</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+  <option value="Transgender">Transgender</option>
+</select>
+
+<!-- WIDOW -->
+<h3>Widow Filters</h3>
+<select id="widow_caste" style="display:none">
+  <option value="">Community</option>
+  <option value="BC">BC</option>
+  <option value="MBC">MBC</option>
+  <option value="SC">SC</option>
+  <option value="ST">ST</option>
+  <option value="OC">OC</option>
+  <option value="Minority">Minority</option>
+</select>
+
+<select id="widow_gender" style="display:none">
+  <option value="">Gender</option>
+  <option value="Female">Female</option>
+</select>
+
+<!-- ENTREPRENEUR -->
+<h3>Entrepreneur Filters</h3>
+<select id="entre_caste" style="display:none">
+  <option value="">Community</option>
+  <option value="BC">BC</option>
+  <option value="MBC">MBC</option>
+  <option value="SC">SC</option>
+  <option value="ST">ST</option>
+  <option value="OC">OC</option>
+  <option value="Minority">Minority</option>
+</select>
+
+<select id="entre_gender" style="display:none">
+  <option value="">Gender</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+  <option value="Transgender">Transgender</option>
+</select>
+
+<select id="collateral" style="display:none">
+  <option value="">Collateral</option>
+  <option value="Yes">Required</option>
+  <option value="No">Not Required</option>
+</select>
+
+<select id="interest" style="display:none">
+  <option value="">Interest</option>
+  <option value="5">Below 5%</option>
+  <option value="10">Below 10%</option>
+</select>
+
+<h2>Results</h2>
+<div id="results"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const supabaseClient = window.supabase.createClient(
+  'https://zzgnllfalopyjibndbui.supabase.co',
+  'sb_publishable_XLjmJXavBRRkjv6HpBz7Cg_z7BIS29m'
+)
+
+// Load categories
+async function loadCategories() {
+  const { data } = await supabaseClient.from('CATEGORIES').select('*')
+  const dropdown = document.getElementById("category")
+
+  data.forEach(item => {
+    const option = document.createElement("option")
+    option.value = item.id
+    option.textContent = item.name
+    dropdown.appendChild(option)
+  })
+}
+loadCategories()
+
+async function fetchData() {
+  const categoryId = document.getElementById("category").value
+  const type = document.getElementById("type").value
+  const results = document.getElementById("results")
+
+  if (!categoryId || !type) return
+
+  results.innerHTML = "Loading..."
+
+  // GET VALUES
+  const land = document.getElementById("land").value
+  const caste = document.getElementById("caste").value
+  const income = document.getElementById("income").value
+
+  const quota = document.getElementById("quota").value
+  const student_caste = document.getElementById("student_caste").value
+  const gender = document.getElementById("gender").value
+
+  const widow_caste = document.getElementById("widow_caste").value
+  const widow_gender = document.getElementById("widow_gender").value
+
+  const entre_caste = document.getElementById("entre_caste").value
+  const entre_gender = document.getElementById("entre_gender").value
+  const collateral = document.getElementById("collateral").value
+  const interest = document.getElementById("interest").value
+
+  let query = supabaseClient
+    .from(type === "loan" ? "loan" : "schemes")
+    .select('*')
+    .eq('category_id', categoryId)
+
+  // FARMER
+  if (land !== "") {
+    query = query
+      .lte('min_land', Number(land))
+      .gte('max_land', Number(land))
+  }
+
+  if (caste) query = query.ilike('caste', %${caste}%)
+  if (income) query = query.lte('income_limit', Number(income))
+
+  // STUDENT
+  if (quota) query = query.eq('quota', quota)
+  if (student_caste) query = query.ilike('caste', %${student_caste}%)
+  if (gender) query = query.ilike('gender', %${gender}%)
+
+  // WIDOW
+  if (widow_caste) query = query.ilike('caste', %${widow_caste}%)
+  if (widow_gender) query = query.ilike('gender', %${widow_gender}%)
+
+  // ENTREPRENEUR
+  if (entre_caste) query = query.ilike('caste', %${entre_caste}%)
+  if (entre_gender) query = query.ilike('gender', %${entre_gender}%)
+  if (collateral) query = query.eq('collateral_required', collateral)
+  if (interest) query = query.lte('interest_rate', Number(interest))
+
+  const { data } = await query
+
+  results.innerHTML = ""
+
+  if (!data || data.length === 0) {
+    results.innerHTML = "No data found"
+    return
+  }
+
+  data.forEach(item => {
+    const div = document.createElement("div")
+    div.style.border = "1px solid #ccc"
+    div.style.margin = "10px"
+    div.style.padding = "10px"
+
+    let content = <h3>${item.scheme_name || item.loan_name}</h3>
+
+    for (let key in item) {
+      if (item[key] !== null && !["id","created_at","category_id"].includes(key)) {
+        content += <p><b>${key}:</b> ${item[key]}</p>
+      }
+    }
+
+    div.innerHTML = content
+    results.appendChild(div)
+  })
+}
+
+// EVENTS
+document.getElementById("category").addEventListener("change", fetchData)
+document.getElementById("type").addEventListener("change", fetchData)
+
+// SHOW FILTERS
+document.getElementById("category").addEventListener("change", () => {
+  const text = category.options[category.selectedIndex].text.toLowerCase()
+
+  const all = ["land","caste","income","quota","student_caste","gender","widow_caste","widow_gender","entre_caste","entre_gender","collateral","interest"]
+  all.forEach(id => document.getElementById(id).style.display = "none")
+
+  if (text.includes("farmer")) ["land","caste","income"].forEach(id => document.getElementById(id).style.display="block")
+  if (text.includes("student")) ["quota","student_caste","gender"].forEach(id => document.getElementById(id).style.display="block")
+  if (text.includes("widow")) ["widow_caste","widow_gender"].forEach(id => document.getElementById(id).style.display="block")
+  if (text.includes("entrepreneur")) ["entre_caste","entre_gender","collateral","interest"].forEach(id => document.getElementById(id).style.display="block")
+})
+</script>
+
+</body>
+</html>
