@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MITHRAN Finder Pro</title>
     <style>
@@ -29,14 +29,16 @@
         .error-msg { color: #ff5555; background: #3a1a1a; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #552222; }
         .info-text { text-align: center; color: #666; padding: 20px; font-style: italic; }
     </style>
-<style type="text/css" id="operaUserStyle"></style><style type="text/css"></style></head>
+</head>
 <body>
 
 <div class="container">
     <h1>MITHRAN Finder</h1>
 
     <label>1. Who are you?</label>
-    <select id="category"><option value="">-- Select Category --</option><option value="1">farmer</option><option value="2">student</option><option value="3">widow</option><option value="4">entrepreneur</option></select>
+    <select id="category">
+        <option value="">-- Select Category --</option>
+    </select>
 
     <label>2. Searching for?</label>
     <select id="type">
@@ -44,8 +46,8 @@
         <option value="schemes">Schemes</option>
     </select>
 
-    <div id="section-farmer" class="filter-section" style="display: block;">
-        <h3>Farmer Land &amp; Community</h3>
+    <div id="section-farmer" class="filter-section">
+        <h3>Farmer Land & Community</h3>
         <label>Land Size (Acres)</label>
         <input type="number" id="land" placeholder="Enter acres (e.g. 2.5)" step="0.1">
         <label>Community</label>
@@ -56,7 +58,7 @@
         </select>
     </div>
 
-    <div id="section-student" class="filter-section" style="display: none;">
+    <div id="section-student" class="filter-section">
         <h3>Student Details</h3>
         <label>Gender</label>
         <select id="gender">
@@ -78,10 +80,27 @@
         </select>
     </div>
 
-    <div id="results"><div class="card"><h3>Agriculture Infrastructure Fund</h3><p><b>scheme name:</b> <span>Agriculture Infrastructure Fund</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>3% interest subvention for post-harvest infra projects.</span></p><p><b>official lk:</b> <span>https://agriinfra.dac.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Agri Udaan Scheme</h3><p><b>scheme name:</b> <span>Agri Udaan Scheme</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Mentorship and incubation for agricultural startups.</span></p><p><b>official lk:</b> <span>https://aicra.org</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>National Livestock Mission</h3><p><b>scheme name:</b> <span>National Livestock Mission</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Financial assistance for poultry sheep and goat farming.</span></p><p><b>official lk:</b> <span>https://nlm.udyamimitra.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Integrated Agri Marketing Scheme</h3><p><b>scheme name:</b> <span>Integrated Agri Marketing Scheme</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Subsidies for storage and cold chain infrastructure.</span></p><p><b>official lk:</b> <span>https://agmarknet.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Gramin Bhandaran Yojana</h3><p><b>scheme name:</b> <span>Gramin Bhandaran Yojana</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Capital investment subsidy for rural godowns.</span></p><p><b>official lk:</b> <span>https://nabard.org</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Agri Export Policy Support</h3><p><b>scheme name:</b> <span>Agri Export Policy Support</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Incentives for farmers to export their produce.</span></p><p><b>official lk:</b> <span>https://apeda.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>TN Farm Women Development</h3><p><b>scheme name:</b> <span>TN Farm Women Development</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>200000</span></p><p><b>gender:</b> <span>Female</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Training and financial aid for women in agriculture.</span></p><p><b>official lk:</b> <span>https://tnrd.gov.in</span></p><p><b>state:</b> <span>Tamil Nadu</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Market Intervention Scheme</h3><p><b>scheme name:</b> <span>Market Intervention Scheme</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Price support for perishable horticultural commodities.</span></p><p><b>official lk:</b> <span>https://agmarknet.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Rural Godown Scheme</h3><p><b>scheme name:</b> <span>Rural Godown Scheme</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Creation of scientific storage capacity in rural areas.</span></p><p><b>official lk:</b> <span>https://nabard.org</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Cold Storage Subsidy</h3><p><b>scheme name:</b> <span>Cold Storage Subsidy</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Support for temperature-controlled storage units.</span></p><p><b>official lk:</b> <span>https://nhb.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Agri-Clinic &amp; Agri-Business Centres</h3><p><b>scheme name:</b> <span>Agri-Clinic &amp; Agri-Business Centres</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Subsidies for agri-graduates to start ventures.</span></p><p><b>official lk:</b> <span>https://acabc.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>PM-Gati Shakti Agri Logistics</h3><p><b>scheme name:</b> <span>PM-Gati Shakti Agri Logistics</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Improving transportation of farm produce.</span></p><p><b>official lk:</b> <span>https://agriinfra.dac.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div><div class="card"><h3>Digital Agriculture Mission</h3><p><b>scheme name:</b> <span>Digital Agriculture Mission</span></p><p><b>caste:</b> <span>SC, ST, BC, MBC, OC, Minority</span></p><p><b>come limit:</b> <span>NULL</span></p><p><b>gender:</b> <span>Male/Female/Transgender</span></p><p><b>differential abled:</b> <span>No</span></p><p><b>description:</b> <span>Promoting tech use like drones and AI in farming.</span></p><p><b>official lk:</b> <span>https://agri-stack.gov.in</span></p><p><b>state:</b> <span>Central</span></p><p><b>max land:</b> <span>999</span></p><p><b>type:</b> <span>farmer</span></p></div></div>
+    <div id="section-widow" class="filter-section">
+        <h3>Widow / Destitute Details</h3>
+        <label>Specific Status</label>
+        <select id="widow_status">
+            <option value="">All Statuses</option>
+            <option value="Widow">Widow</option>
+            <option value="Destitute">Destitute Woman</option>
+            <option value="Deserted">Deserted Wife</option>
+        </select>
+        <label>Community</label>
+        <select id="widow_caste">
+            <option value="">All Communities</option>
+            <option value="BC">BC</option><option value="MBC">MBC</option>
+            <option value="SC">SC</option><option value="ST">ST</option>
+        </select>
+    </div>
+
+    <div id="results"></div>
 </div>
 
-<script src="./MITHRAN _ORGINAL_files/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
 const supabaseClient = window.supabase.createClient(
     'https://zzgnllfalopyjibndbui.supabase.co',
@@ -111,15 +130,17 @@ async function performSearch() {
 
     resDiv.innerHTML = "<p class='info-text'>Fetching matches...</p>";
 
-    // Column Mapping for DB quirks
+    // Column Mapping for known DB quirks
     const landMaxCol = (tableName === "schemes") ? "max_land in" : "max_land";
 
     let query = supabaseClient.from(tableName).select('*').eq('category_id', catId);
 
+    // Section Visibilities
     const isFarmer = document.getElementById("section-farmer").style.display === "block";
     const isStudent = document.getElementById("section-student").style.display === "block";
+    const isWidow = document.getElementById("section-widow").style.display === "block";
 
-    // Farmer Logic
+    // 1. Farmer Logic
     if (isFarmer) {
         const land = document.getElementById("land").value;
         const caste = document.getElementById("farmer_caste").value;
@@ -130,7 +151,7 @@ async function performSearch() {
         if (caste) query = query.ilike('caste', `%${caste}%`);
     }
 
-    // Student Logic
+    // 2. Student Logic
     if (isStudent) {
         const gender = document.getElementById("gender").value;
         const caste = document.getElementById("student_caste").value;
@@ -140,8 +161,13 @@ async function performSearch() {
         if (quota) query = query.ilike('quoata', `%${quota}%`);
     }
 
-    // Note: Widow and Entrepreneur now have no extra filters, 
-    // so it just returns all items linked to their category_id.
+    // 3. Widow Logic (Searching Target_Audience)
+    if (isWidow) {
+        const status = document.getElementById("widow_status").value;
+        const caste = document.getElementById("widow_caste").value;
+        if (status) query = query.ilike('Target_Audience', `%${status}%`);
+        if (caste) query = query.ilike('caste', `%${caste}%`);
+    }
 
     const { data, error } = await query;
 
@@ -179,63 +205,29 @@ function renderUI(data) {
     });
 }
 
+// Category Toggle Logic
 document.getElementById("category").addEventListener("change", function() {
     const text = this.options[this.selectedIndex].text.toLowerCase();
     
-    // Reset all filter sections
+    // Hide all
     document.getElementById("section-farmer").style.display = "none";
     document.getElementById("section-student").style.display = "none";
+    document.getElementById("section-widow").style.display = "none";
 
-    // Only show filters for specific categories
+    // Show selected
     if (text.includes("farmer")) document.getElementById("section-farmer").style.display = "block";
     else if (text.includes("student")) document.getElementById("section-student").style.display = "block";
+    else if (text.includes("widow") || text.includes("woman")) document.getElementById("section-widow").style.display = "block";
     
     performSearch();
 });
 
+// Update on change
 document.querySelectorAll('input, select').forEach(el => {
     el.addEventListener('change', performSearch);
     el.addEventListener('input', performSearch);
 });
 
 </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-
-</body></html>
+</body>
+</html>
